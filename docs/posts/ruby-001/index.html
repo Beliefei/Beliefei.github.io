@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>ruby的结构和运行 | Cony的自驱空间</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="ruby的基础入门">
+    <meta name="generator" content="Hugo 0.145.0">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="Cony">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css" >
+
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://beliefei.github.io/posts/ruby-001/">
+    
+
+    <meta property="og:url" content="https://beliefei.github.io/posts/ruby-001/">
+  <meta property="og:site_name" content="Cony的自驱空间">
+  <meta property="og:title" content="ruby的结构和运行">
+  <meta property="og:description" content="ruby的基础入门">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-03-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-03-28T00:00:00+00:00">
+    <meta property="article:tag" content="Ruby">
+    <meta property="article:tag" content="编程语言">
+
+  <meta itemprop="name" content="ruby的结构和运行">
+  <meta itemprop="description" content="ruby的基础入门">
+  <meta itemprop="datePublished" content="2025-03-28T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-03-28T00:00:00+00:00">
+  <meta itemprop="wordCount" content="61">
+  <meta itemprop="keywords" content="ruby,学习,基础">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ruby的结构和运行">
+  <meta name="twitter:description" content="ruby的基础入门">
+
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        Cony的自驱空间
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">ruby的结构和运行</h1>
+      
+      <p class="tracked"><strong>Cony</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-03-28T00:00:00Z">March 28, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="ruby-程序的结构和运行">ruby 程序的结构和运行</h2>
+<h3 id="词法结构">词法结构</h3>
+<h4 id="注释">注释</h4>
+<ul>
+<li>ruby 中的注释以 <code>#</code> 字符开始并持续到该行结束</li>
+<li>通常情况下通过在每一行前添加一个 <code>#</code> 字符来表示多行注释,如</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># xxxxx</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># sdsdmkslmdf</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span></code></pre></div><h5 id="嵌入文档注释">嵌入文档注释</h5>
+<p>Ruby支持另外一种称为嵌入式文档的多行注释风格。这种注释以一个 <code>=begin</code> 为开头，并以一个 <code>=end</code>结尾。任何出现在在<code>begin</code>之后的文本都会被作为注释而忽略掉，前提是这些文本和 <code>begin</code> 之间至少要有一个空格作为分界。位于 <code>end</code> 之后的文本也同样遵循这个规则。</p>
+<blockquote>
+<p>注意: <code>=</code>必须作为改行的第一个字符，这样才能使嵌入式文档生效</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#75715e">=begin This is used to begin a comment.Now it is itself commented out!
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    The code that goes here is no longer commented out
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">=end</span>
+</span></span></code></pre></div><p>利用嵌入式文档，可以注释调大段的代码，而无需在每一行代码前添加 <code>#</code> 字符。
+嵌入式文档，既可以用在程序中插入大段的文档，也可以在ruby程序中嵌入其他语言边学的源代码（类似md文件中的三个反引号）。
+嵌入式文档通常会被一些后期处理工具使用，在 <code>=begin</code> 之后，通常跟着一个标识符来表明希望哪种工具来处理该注释。</p>
+<h5 id="文档化的注释">文档化的注释</h5>
+<p>在Ruby的程序里的方法、类以及模块定义之前，可以包含嵌入式的API文档，这些文档是一些遵循特殊格式的注释</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/ruby/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Ruby</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">编程语言</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://beliefei.github.io/" >
+    &copy;  Cony的自驱空间 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

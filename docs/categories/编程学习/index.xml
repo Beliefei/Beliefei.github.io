@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>编程学习 on Cony的自驱空间</title>
+    <link>https://beliefei.github.io/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/</link>
+    <description>Recent content in 编程学习 on Cony的自驱空间</description>
+    <generator>Hugo</generator>
+    <language>zh</language>
+    <lastBuildDate>Fri, 28 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://beliefei.github.io/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ruby的结构和运行</title>
+      <link>https://beliefei.github.io/posts/ruby-001/</link>
+      <pubDate>Fri, 28 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://beliefei.github.io/posts/ruby-001/</guid>
+      <description>&lt;h2 id=&#34;ruby-程序的结构和运行&#34;&gt;ruby 程序的结构和运行&lt;/h2&gt;&#xA;&lt;h3 id=&#34;词法结构&#34;&gt;词法结构&lt;/h3&gt;&#xA;&lt;h4 id=&#34;注释&#34;&gt;注释&lt;/h4&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;ruby 中的注释以 &lt;code&gt;#&lt;/code&gt; 字符开始并持续到该行结束&lt;/li&gt;&#xA;&lt;li&gt;通常情况下通过在每一行前添加一个 &lt;code&gt;#&lt;/code&gt; 字符来表示多行注释,如&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# xxxxx&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# sdsdmkslmdf&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;嵌入文档注释&#34;&gt;嵌入文档注释&lt;/h5&gt;&#xA;&lt;p&gt;Ruby支持另外一种称为嵌入式文档的多行注释风格。这种注释以一个 &lt;code&gt;=begin&lt;/code&gt; 为开头，并以一个 &lt;code&gt;=end&lt;/code&gt;结尾。任何出现在在&lt;code&gt;begin&lt;/code&gt;之后的文本都会被作为注释而忽略掉，前提是这些文本和 &lt;code&gt;begin&lt;/code&gt; 之间至少要有一个空格作为分界。位于 &lt;code&gt;end&lt;/code&gt; 之后的文本也同样遵循这个规则。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;注意: &lt;code&gt;=&lt;/code&gt;必须作为改行的第一个字符，这样才能使嵌入式文档生效&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;=begin This is used to begin a comment.Now it is itself commented out!&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    The code that goes here is no longer commented out&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;=end&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;利用嵌入式文档，可以注释调大段的代码，而无需在每一行代码前添加 &lt;code&gt;#&lt;/code&gt; 字符。&#xA;嵌入式文档，既可以用在程序中插入大段的文档，也可以在ruby程序中嵌入其他语言边学的源代码（类似md文件中的三个反引号）。&#xA;嵌入式文档通常会被一些后期处理工具使用，在 &lt;code&gt;=begin&lt;/code&gt; 之后，通常跟着一个标识符来表明希望哪种工具来处理该注释。&lt;/p&gt;&#xA;&lt;h5 id=&#34;文档化的注释&#34;&gt;文档化的注释&lt;/h5&gt;&#xA;&lt;p&gt;在Ruby的程序里的方法、类以及模块定义之前，可以包含嵌入式的API文档，这些文档是一些遵循特殊格式的注释&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

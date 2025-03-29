@@ -2,6 +2,7 @@ baseURL = 'https://beliefei.github.io/'
 languageCode = 'zh'
 title = 'Cony的自驱空间'
 theme = 'ananke'
+publishDir = 'docs'
 [params]
     branch = "主页"
     author = "Cony"
