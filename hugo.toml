@@ -1,4 +1,4 @@
-baseURL = 'https://Beliefei.github.io/'
+baseURL = 'https://beliefei.github.io/'
 languageCode = 'zh'
 title = 'Cony的自驱空间'
 theme = 'ananke'
